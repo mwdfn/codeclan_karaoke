@@ -1,26 +1,32 @@
 import unittest
 
 from classes.room import *
-
+from classes.guest import *
+#from classes.song import *
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room_info = [
-            {
-            "room": 1,
-            "capacity": 10
-            },
-            {
-            "room": 2,
-            "capacity": 10
-            },
-            {
-            "room": 3,
-            "capacity": 10
-            },
-            {
-            "room": 4,
-            "capacity": 10
-            }
-        ]
+        self.room_number = Room(1)
+        self.guest_list = []
+        self.song_list = []
+        
+        self.guest_name = ("Bob")
+        self.song_name = ("Bohemian Rhapsody")
 
-    
+        #"Bob", "Linda", "Tina", "Gene", "Louise"
+
+    def test_room_has_number(self):
+        self.assertEqual(1, self.room_number.room_number)
+
+    def test_guest_list_len(self):
+        self.assertEqual(0, Room.check_guest_list_len(self))
+
+    def test_song_list_len(self):
+        self.assertEqual(0, Room.check_song_list_len(self))
+
+    def test_guest_added_to_room_list(self):
+        Room.add_guest_to_list(self, self.guest_name)
+        self.assertEqual(1, Room.check_guest_list_len(self))
+
+    def test_add_song_to_room(self):
+        Room.add_song_to_list(self, self.song_name)
+        self.assertEqual(1, Room.check_song_list_len(self))
