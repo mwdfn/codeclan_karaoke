@@ -2,7 +2,7 @@ import unittest
 
 from classes.room import *
 from classes.guest import *
-#from classes.song import *
+from classes.song import *
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room_number = Room(1)
@@ -30,3 +30,9 @@ class TestRoom(unittest.TestCase):
     def test_add_song_to_room(self):
         Room.add_song_to_list(self, self.song_name)
         self.assertEqual(1, Room.check_song_list_len(self))
+
+    def test_is_room_capacity_full(self):
+        Room.check_room_capacity(self, 10)
+        self.assertEqual("Sorry, all rooms are full", self.room_capacity)
+
+    
